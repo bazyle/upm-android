@@ -6,7 +6,8 @@
 
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
-
+	<uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+	
     <uses-sdk android:minSdkVersion="3" android:targetSdkVersion="16"/>
 
     <application android:icon="@drawable/upm" 
@@ -46,6 +47,15 @@
 
         <activity android:name=".SelectDatabaseFromDropboxActivity"
                   android:label="@string/dropbox_files">
+        </activity>
+        
+        <activity android:name=".SelectDatabaseFromDriveActivity"
+                  android:label="@string/drive_files">
+          	<meta-data android:name="com.google.android.apps.drive.APP_ID" android:value="id=781651449510" />
+          	  <intent-filter>
+		        <action android:name="com.google.android.apps.drive.DRIVE_OPEN" />
+		        <data android:mimeType="application/vnd.google-apps.drive-sdk.781651449510" />
+  	          </intent-filter>
         </activity>
 
         <activity android:name=".SyncDatabaseViaHttpActivity"

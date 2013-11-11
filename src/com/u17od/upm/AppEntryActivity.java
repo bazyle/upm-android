@@ -43,6 +43,7 @@ public class AppEntryActivity extends Activity {
     private static final int REQ_CODE_DOWNLOAD_DB = 2;
     private static final int REQ_CODE_OPEN_DB = 3;
     private static final int REQ_CODE_GET_DB_FILE = 4;
+    private static final int REQ_CODE_GET_DRIVE_DB_FILE = 5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -168,6 +169,15 @@ public class AppEntryActivity extends Activity {
                     public void onClick(View v) {
                         Intent i = new Intent(AppEntryActivity.this, SelectDatabaseFromDropboxActivity.class);
                         startActivityForResult(i, REQ_CODE_GET_DB_FILE);
+                    }
+                });
+                
+                Button retrieveFromDriveButton = (Button) dialog.findViewById(R.id.retrieve_from_drive);
+                retrieveFromDriveButton.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i = new Intent(AppEntryActivity.this, SelectDatabaseFromDriveActivity.class);
+                        startActivityForResult(i, REQ_CODE_GET_DRIVE_DB_FILE);
                     }
                 });
 
