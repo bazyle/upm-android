@@ -20,6 +20,8 @@ import com.google.api.services.drive.Drive.Files;
 import com.google.api.services.drive.DriveScopes;
 import com.google.api.services.drive.model.File;
 import com.google.api.services.drive.model.FileList;
+import com.google.api.services.drive.model.ParentReference;
+import com.u17od.upm.R.string;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -70,10 +72,7 @@ public class SelectDatabaseFromDriveActivity extends ListActivity {
                     startActivityForResult(credential.newChooseAccountIntent(), REQUEST_ACCOUNT_PICKER);
                 }
                 break;
-            /*case CAPTURE_IMAGE:
-                if (resultCode == Activity.RESULT_OK) {
-                    saveFileToDrive();
-                }*/
+           
         }
     }
 
@@ -91,7 +90,17 @@ public class SelectDatabaseFromDriveActivity extends ListActivity {
         @Override
         protected Integer doInBackground(Void... params) {
             try {
-            	Files.List request = service.files().list();
+            	
+            	String parentId = Utilities.getConfig(SelectDatabaseFromDriveActivity.this, Utilities.DRIVE_PREFS, Utilities.DRIVE_UPMFOLDER_ID);
+            	if(parentId == null || parentId.length() == 0){
+            		Files.List parentFolderRequest = service.files().list().setQ("mimeType = 'application/vnd.google-apps.folder' and title = 'UPM'");
+            		FileList parentFolder = parentFolderRequest.execute();
+            		List<File> fs =  parentFolder.getItems();
+            		File parent = fs.get(0);
+            		parentId = parent.getId();
+            	}
+            	
+            	Files.List request = service.files().list().setQ("'"+parentId+"' in parents and trashed = false");
                 rootMetadata = request.execute();
                 return 0;
             }
@@ -137,7 +146,9 @@ public class SelectDatabaseFromDriveActivity extends ListActivity {
         	ArrayList<String> fileNames = new ArrayList<String>();
         	
             for (File entry : result) {
-                 fileNames.add(entry.getOriginalFilename());
+            	if(entry.getDownloadUrl() != null && entry.getDownloadUrl().length() > 0){
+            		fileNames.add(entry.getOriginalFilename());
+            	}
             }
             return fileNames;
         }
