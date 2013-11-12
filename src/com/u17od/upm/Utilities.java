@@ -43,7 +43,9 @@ public class Utilities {
     public static final String DROPBOX_SELECTED_FILENAME = "DROPBOX_SELECTED_FILENAME";
     
     public static final String DRIVE_PREFS = "DRIVE_PREFS";
+    public static final String DRIVE_SECRET = "DRIVE_SECRET";
     public static final String DRIVE_UPMFOLDER_ID = "DRIVE_UPMFOLDER_ID";
+    public static final String DRIVE_SELECTED_FILENAME = "DRIVE_SELECTED_FILENAME";
     
     public static class VERSION_CODES {
         public static final int HONEYCOMB = 11;

@@ -65,6 +65,10 @@
         <activity android:name=".SyncDatabaseViaDropboxActivity"
                   android:theme="@style/Theme.Transparent">
         </activity>
+        
+         <activity android:name=".SyncDatabaseViaDriveActivity"
+                  android:theme="@style/Theme.Transparent">
+        </activity>
 
         <activity android:name=".SearchResults"
                   android:label="@string/search_results"

@@ -47,6 +47,7 @@ public class Prefs extends PreferenceActivity implements OnPreferenceChangeListe
     public static interface SyncMethod {
         public static final String DISABLED = "disabled";
         public static final String DROPBOX = "dropbox";
+        public static final String DRIVE = "drive";
         public static final String HTTP = "http";
     }
 
