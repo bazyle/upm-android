@@ -4,5 +4,6 @@
         <item >@string/sync_method_disabled</item>
         <item >@string/sync_method_dropbox</item>
         <item >@string/sync_method_http</item>
+        <item >@string/sync_method_drive</item>
     </string-array>
 </resources>

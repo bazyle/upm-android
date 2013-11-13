@@ -132,6 +132,7 @@ Version: %s"</string>
     <string name="sync_method">Sync Method</string>
     <string name="sync_method_disabled">Disabled</string>
     <string name="sync_method_dropbox">Dropbox</string>
+    <string name="sync_method_drive">Drive</string>
     <string name="sync_method_http">HTTP Server</string>
     <string name="sync_settings">Sync Settings</string>
     <string name="problem_uploading">Problem Uploading Database</string>
