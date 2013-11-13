@@ -95,6 +95,7 @@ public class AppEntryActivity extends Activity {
             break;
         case REQ_CODE_DOWNLOAD_DB:
         case REQ_CODE_GET_DB_FILE:
+        case REQ_CODE_GET_DRIVE_DB_FILE:
             if (resultCode == RESULT_OK) {
                 Intent i = new Intent(AppEntryActivity.this, FullAccountList.class);
                 startActivityForResult(i, REQ_CODE_OPEN_DB);

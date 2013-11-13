@@ -90,23 +90,22 @@ public class SelectDatabaseFromDriveActivity extends ListActivity {
                     UIUtilities.showToast(this, R.string.enter_password_cancalled);
                     break;
             case ENTER_PW_REQUEST_CODE :
-                        // Setting the DatabaseFileName preference effectively says
-                        // that this is the db to open when the app starts
-                        Utilities.setSyncMethod(Prefs.SyncMethod.DRIVE, this);
-                        String selectedDropboxFilename =
-                                Utilities.getConfig(this, Utilities.DRIVE_PREFS,
-                                        Utilities.DRIVE_SELECTED_FILENAME);
-                        Utilities.setDatabaseFileName(selectedDropboxFilename,
-                                SelectDatabaseFromDriveActivity.this);
+                    // Setting the DatabaseFileName preference effectively says
+                    // that this is the db to open when the app starts
+                    Utilities.setSyncMethod(Prefs.SyncMethod.DRIVE, this);
+                    String selectedDriveFilename =
+                            Utilities.getConfig(this, Utilities.DRIVE_PREFS,
+                                    Utilities.DRIVE_SELECTED_FILENAME);
+                    Utilities.setDatabaseFileName(selectedDriveFilename, this);
 
-                        // Put a reference to the decrypted database on the Application object
-                        UPMApplication app = (UPMApplication) getApplication();
-                        app.setPasswordDatabase(EnterMasterPassword.decryptedPasswordDatabase);
-                        app.setTimeOfLastSync(new Date());
+                    // Put a reference to the decrypted database on the Application object
+                    UPMApplication app = (UPMApplication) getApplication();
+                    app.setPasswordDatabase(EnterMasterPassword.decryptedPasswordDatabase);
+                    app.setTimeOfLastSync(new Date());
 
-                        setResult(RESULT_OK);
-                        finish();
-                        break;
+                    setResult(RESULT_OK);
+                    finish();
+                    break;
         }
     }
 
@@ -116,7 +115,7 @@ public class SelectDatabaseFromDriveActivity extends ListActivity {
     @Override
     protected void onListItemClick(ListView lv, View v, int position, long id) {
         String selectedFileName = (String) lv.getItemAtPosition(position);
-        Utilities.setConfig(this, Utilities.DRIVE_PREFS,
+        Utilities.setConfig(SelectDatabaseFromDriveActivity.this, Utilities.DRIVE_PREFS,
                 Utilities.DRIVE_SELECTED_FILENAME, selectedFileName);
         new DownloadFileTask().execute(selectedFileName);
     	

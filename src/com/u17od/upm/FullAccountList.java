@@ -197,13 +197,17 @@ public class FullAccountList extends AccountsList {
                 showDialog(DIALOG_ABOUT);
                 break;
             case R.id.sync:
+            	
                 if (Utilities.getSyncMethod(this).equals(Prefs.SyncMethod.HTTP)) {
                     Intent i = new Intent(FullAccountList.this, SyncDatabaseViaHttpActivity.class);
                     startActivityForResult(i, SyncDatabaseActivity.SYNC_DB_REQUEST_CODE);
                 } else if (Utilities.getSyncMethod(this).equals(Prefs.SyncMethod.DROPBOX)) {
                     Intent i = new Intent(FullAccountList.this, SyncDatabaseViaDropboxActivity.class);
                     startActivityForResult(i, SyncDatabaseActivity.SYNC_DB_REQUEST_CODE);
-                }
+                } else if (Utilities.getSyncMethod(this).equals(Prefs.SyncMethod.DRIVE)) {
+                	Intent i = new Intent(FullAccountList.this, SyncDatabaseViaDriveActivity.class);
+                	startActivityForResult(i, SyncDatabaseActivity.SYNC_DB_REQUEST_CODE);
+            	} 
                 break;
             case R.id.preferences:
                 startActivity(new Intent(this, Prefs.class));
