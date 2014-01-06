@@ -63,7 +63,7 @@ public class Prefs extends PreferenceActivity implements OnPreferenceChangeListe
     private boolean saveRequired;
 
     private String[] syncMethodValues = {
-            SyncMethod.DISABLED, SyncMethod.DROPBOX, SyncMethod.HTTP
+            SyncMethod.DISABLED, SyncMethod.DROPBOX, SyncMethod.HTTP, SyncMethod.DRIVE
     };
     private String[] syncMethodHuman;
 
